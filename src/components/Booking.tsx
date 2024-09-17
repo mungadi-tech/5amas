@@ -1,6 +1,6 @@
 import { Card, Heading, Inset, Text } from "@radix-ui/themes";
 import { motion } from "framer-motion";
-import photo from "../assets/food_bg.png";
+import photo from "../assets/resources_ogo.png";
 import { PhysicalBooking } from "../forms/PhysicalBooking";
 import { VirtualBooking } from "../forms/VirtualBookin";
 
