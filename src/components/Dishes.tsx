@@ -18,19 +18,19 @@ const menuCategories: MenuCategoriesTypes[] = [
     items: [
       {
         name: "Cosmic Calamari",
-        price: "N12.99",
+        price: "₦12.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Nebula Nachos",
-        price: "N10.99",
+        price: "₦10.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Quantum Quesadillas",
-        price: "N11.99",
+        price: "₦11.99",
         desc: "50 Samosa",
         image: rice,
       },
@@ -41,19 +41,19 @@ const menuCategories: MenuCategoriesTypes[] = [
     items: [
       {
         name: "Galactic Grilled Salmon",
-        price: "N24.99",
+        price: "₦24.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Supernova Steak",
-        price: "N29.99",
+        price: "₦29.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Interstellar Chicken Curry",
-        price: "N19.99",
+        price: "₦19.99",
         desc: "50 Samosa",
         image: rice,
       },
@@ -64,19 +64,19 @@ const menuCategories: MenuCategoriesTypes[] = [
     items: [
       {
         name: "Black Hole Brownie",
-        price: "N8.99",
+        price: "₦8.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Milky Way Mousse",
-        price: "N7.99",
+        price: "₦7.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Asteroid Ice Cream",
-        price: "N6.99",
+        price: "₦6.99",
         desc: "50 Samosa",
         image: rice,
       },
@@ -87,31 +87,31 @@ const menuCategories: MenuCategoriesTypes[] = [
     items: [
       {
         name: "Package 01",
-        price: "N10,000",
+        price: "₦10,000",
         desc: "15 Samosa, 15 Springroll, 30 Puffs, 4 Bottles of Zobo, Free 5 Puffs",
         image: rice,
       },
       {
         name: "Package 02",
-        price: "N16,500",
+        price: "₦16,500",
         desc: "15 Samosa, 15 Springroll, 30 Puffs, 10 Peppered Chicken, Free 8 Puffs",
         image: rice,
       },
       {
         name: "Package 03",
-        price: "N17,000",
+        price: "₦17,000",
         desc: "30 Samosa, 30 Springroll, 60 Puffs, Free 10 Puffs",
         image: rice,
       },
       {
         name: "Package 04",
-        price: "N34,000",
+        price: "₦34,000",
         desc: "60 Samosa, 60 Springroll, 120 Puffs, Free 12 Puffs",
         image: rice,
       },
       {
         name: "Package 05",
-        price: "N68,000",
+        price: "₦68,000",
         desc: "120 Samosa, 120 Springroll, 240 Puffs, Free 12 Puffs",
         image: rice,
       },
@@ -122,19 +122,19 @@ const menuCategories: MenuCategoriesTypes[] = [
     items: [
       {
         name: "Pulsar Punch",
-        price: "N5.99",
+        price: "₦5.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Cosmic Cocktail",
-        price: "N9.99",
+        price: "₦9.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Neutron Star Nectar",
-        price: "N4.99",
+        price: "₦4.99",
         desc: "50 Samosa",
         image: rice,
       },
@@ -145,19 +145,19 @@ const menuCategories: MenuCategoriesTypes[] = [
     items: [
       {
         name: "Pulsar Punch",
-        price: "N5.99",
+        price: "₦5.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Cosmic Cocktail",
-        price: "N9.99",
+        price: "₦9.99",
         desc: "50 Samosa",
         image: rice,
       },
       {
         name: "Neutron Star Nectar",
-        price: "N4.99",
+        price: "₦4.99",
         desc: "50 Samosa",
         image: rice,
       },
