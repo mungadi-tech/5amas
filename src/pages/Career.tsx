@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { Footer } from "../components/Footer";
 
-import { Button, Heading, Text } from "@radix-ui/themes";
+import { Button, Container, Heading, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import { HeroHeader } from "../components/HeroHeader";
 
@@ -125,14 +125,22 @@ export function CareerPage() {
           >
             Conduct and Ethics Summary
           </Heading>
-          <div className="mx-auto max-w-3xl text-center text-lg text-gray-600">
-            <Text align={"center"}>
-              5amas Group is a dynamic and innovative holding company operating
-              across multiple sectors. We focus on strategic growth and
-              sustainable development, creating value and driving positive
-              change in the industries we operate in.
+          <Container className="text-center">
+            <Text color="gray" size={"2"}>
+              At 5amas Group, we prioritize ethical conduct and integrity across
+              our operations in investment, food, and technology. We foster a
+              culture of honesty, transparency, and collaboration, valuing
+              diverse perspectives to achieve common goals. Our investment
+              strategies emphasize social responsibility, ensuring alignment
+              with our core values and positive societal impact. We focus on
+              innovation and excellence, developing cutting-edge products that
+              meet customer needs while adhering to all laws and regulations.
+              Accountability is key, with each team member responsible for
+              upholding our ethical standards. By engaging with local
+              communities, we aim to enhance quality of life and create lasting
+              value for stakeholders.
             </Text>
-          </div>
+          </Container>
         </div>
       </section>
       <div className="min-h-screen  mt-10 bg-gradient-to-br from-emerald-900 via-purple-900 to-indigo-900 py-20 text-white">
