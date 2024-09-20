@@ -7,9 +7,13 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import { Button, DropdownMenu } from "@radix-ui/themes";
-import logo from "../assets/logo_main.png";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo_main.png";
+import fo_logo from "../assets/food_logo.png";
+import r_logo from "../assets/resources_ogo.png";
+import t_logo from "../assets/technology_logo.png";
+import f_logo from "../assets/foundation_logo.png";
 
 const businesses = [
   { link: "/resources", title: "5Amas Resources" },
@@ -24,6 +28,14 @@ const company = [
 ];
 export function NavBarSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const loc = useLocation();
+
+  const home_match = "/" === loc.pathname;
+  const resou_match = "/resources" === loc.pathname;
+  const tech_match = "/tech" === loc.pathname;
+  const foun_match = "/foundation" === loc.pathname;
+  const food_match = "/food" === loc.pathname;
+
   return (
     <Navbar
       isMenuOpen={isMenuOpen}
@@ -37,11 +49,35 @@ export function NavBarSection() {
       </NavbarContent>
 
       <NavbarBrand>
-        <img src={logo} alt="" className="h-14" />
+        {home_match ? (
+          <img src={logo} alt="" className="h-14" />
+        ) : tech_match ? (
+          <img src={t_logo} alt="" className="h-14" />
+        ) : food_match ? (
+          <img src={fo_logo} alt="" className="h-14" />
+        ) : foun_match ? (
+          <img src={f_logo} alt="" className="h-14" />
+        ) : resou_match ? (
+          <img src={r_logo} alt="" className="h-14" />
+        ) : (
+          <img src={logo} alt="" className="h-14" />
+        )}
       </NavbarBrand>
       <NavbarContent justify="center" className="hidden">
         <NavbarItem>
-          <img src={logo} alt="" className="h-14" />
+          {home_match ? (
+            <img src={logo} alt="" className="h-14" />
+          ) : tech_match ? (
+            <img src={t_logo} alt="" className="h-14" />
+          ) : food_match ? (
+            <img src={fo_logo} alt="" className="h-14" />
+          ) : foun_match ? (
+            <img src={f_logo} alt="" className="h-14" />
+          ) : resou_match ? (
+            <img src={r_logo} alt="" className="h-14" />
+          ) : (
+            <img src={logo} alt="" className="h-14" />
+          )}
         </NavbarItem>
       </NavbarContent>
 

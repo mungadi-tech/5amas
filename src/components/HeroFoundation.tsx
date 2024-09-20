@@ -14,21 +14,21 @@ export function HeroSectionFoundation() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <h1 className="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-4xl font-extrabold text-blue-900 leading-tight sm:text-5xl lg:text-6xl">
             Innovating Across Industries, <br />
-            <span className="text-emerald-400">Shaping Tomorrow</span>
+            <span className="text-gray-400">Shaping Tomorrow</span>
           </h1>
           <p className="mb-8 text-lg text-gray-300 sm:text-xl">
             5amas Group: A dynamic holding company driving strategic growth and
             sustainable development in investment, food, and technology sectors.
           </p>
           <motion.a
-            href="#learn-more"
+            href="/media"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center rounded-full bg-emerald-500 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-emerald-600"
+            className="inline-flex items-center rounded-full bg-blue-900 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-blue-600"
           >
-            Discover Our Portfolio
+            Our Projects
             <ArrowRight className="ml-2 h-5 w-5" />
           </motion.a>
         </motion.div>

@@ -2,7 +2,12 @@ import { ArrowRight } from "lucide-react";
 import { SwapTextCard } from "./animata/card/swap-text-card";
 import { Heading, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
-import { PartnerMarquee } from "./Partners";
+import { Marquee } from "./magicui/marquee";
+import { cn } from "../lib/utils";
+import fo_logo from "../assets/food_logo.png";
+import r_logo from "../assets/resources_ogo.png";
+import t_logo from "../assets/technology_logo.png";
+import f_logo from "../assets/foundation_logo.png";
 
 export function Body() {
   return (
@@ -95,6 +100,12 @@ export function Body() {
             </div>
           </div>
         </section>
+        <section>
+          <Heading size={"8"} align={"center"} color="purple" mt={"9"}>
+            Our Partners
+          </Heading>
+          <MarqueeSection />
+        </section>
 
         {/* Key Figures Section */}
         <section className="py-4 lg:py-10">
@@ -119,7 +130,7 @@ export function Body() {
             </div>
           </div>
         </section>
-        <PartnerMarquee />
+
         {/* Latest News Section */}
         <section className="py-4 lg:py-8">
           <div className="container mx-auto px-4">
@@ -162,5 +173,58 @@ export function Body() {
         </section>
       </main>
     </>
+  );
+}
+
+const reviews = [
+  {
+    img: fo_logo,
+  },
+  {
+    img: r_logo,
+  },
+  {
+    img: t_logo,
+  },
+  {
+    img: f_logo,
+  },
+];
+
+const ReviewCard = ({ img }: { img: string }) => {
+  return (
+    <figure
+      className={cn(
+        "relative cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img
+          className="rounded-full"
+          width="100"
+          height="100"
+          alt=""
+          src={img}
+        />
+      </div>
+    </figure>
+  );
+};
+
+export function MarqueeSection() {
+  return (
+    <div className="relative flex h-[200px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background md:shadow-xl">
+      <Marquee pauseOnHover className="[--duration:20s]">
+        {reviews.map((review) => (
+          <ReviewCard key={review.img} {...review} />
+        ))}
+      </Marquee>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+    </div>
   );
 }

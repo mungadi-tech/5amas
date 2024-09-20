@@ -16,42 +16,24 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import ceo from "../assets/ceo.jpg";
-import mulikat from "../assets/mulikat.jpg";
 import finance from "../assets/finance.jpg";
+import mulikat from "../assets/mulikat.jpg";
 import operation from "../assets/operation.jpg";
 import pic2 from "../assets/pic2_1_optimized_1000.jpg";
 import gov from "../assets/pic3.jpg";
 import strategy from "../assets/strategy.jpg";
 import { Footer } from "../components/Footer";
+import { HeroHeader } from "../components/HeroHeader";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header / Value Proposition */}
-      <header className="relative bg-gradient-to-r from-blue-400 to-purple-400 py-20 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10"
-          >
-            <h1 className="mb-4 text-4xl font-bold sm:text-5xl lg:text-6xl">
-              About 5amas Group
-            </h1>
-            <p className="max-w-2xl text-xl">
-              Driving innovation and sustainable growth across investment, food,
-              and technology sectors
-            </p>
-          </motion.div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="absolute bottom-0 right-0 h-64 w-64 translate-y-1/2 rounded-tl-full bg-white"
-        ></motion.div>
-      </header>
+      <HeroHeader
+        heading="About 5amas Group"
+        slogan=" - Driving innovation and sustainable growth across investment,food, and technology sectors
+  "
+      />
       <section className="py-8 lg:py-14">
         <div className="container mx-auto px-4">
           <Heading

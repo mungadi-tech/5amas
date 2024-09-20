@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-import { Body } from "../components/Body";
+import { FoundationPage } from "../components/BodyFoundation";
 import { Footer } from "../components/Footer";
 import { HeroSectionFoundation } from "../components/HeroFoundation";
 
@@ -7,7 +7,7 @@ export default function Foundation() {
   return (
     <div>
       <HeroSectionFoundation />
-      <Body />
+      <FoundationPage />
       <Footer
         Ficon={<Facebook />}
         Ticon={<Twitter />}
