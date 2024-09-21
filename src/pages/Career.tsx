@@ -30,62 +30,6 @@ const newsArticles = [
       "In a move towards greater environmental responsibility, 5amas Group announces a new partnership with local businesses to implement sustainable practices across its office spaces...",
   },
 ];
-
-// type JobOpenings = (typeof jobOpenings)[0];
-
-// const JobListing = (job: JobOpenings) => {
-//   const [isExpanded, setIsExpanded] = useState(false);
-
-//   return (
-//     <motion.div
-//       className="bg-emerald-800 bg-opacity-30 rounded-lg p-6 backdrop-blur-md hover:bg-opacity-40 transition-all duration-300"
-//       initial={{ opacity: 0, y: 20 }}
-//       animate={{ opacity: 1, y: 0 }}
-//       transition={{ duration: 0.5 }}
-//     >
-//       <div
-//         className="flex justify-between items-center cursor-pointer"
-//         onClick={() => setIsExpanded(!isExpanded)}
-//       >
-//         <h3 className="text-xl font-semibold text-emerald-300">{job.title}</h3>
-//         {isExpanded ? (
-//           <ChevronUp className="text-emerald-300" />
-//         ) : (
-//           <ChevronDown className="text-emerald-300" />
-//         )}
-//       </div>
-//       <div className="mt-2 flex flex-wrap gap-2">
-//         <span className="bg-purple-600 text-white px-2 py-1 rounded-full text-sm">
-//           {job.department}
-//         </span>
-//         <span className="bg-emerald-600 text-white px-2 py-1 rounded-full text-sm">
-//           {job.location}
-//         </span>
-//         <span className="bg-indigo-600 text-white px-2 py-1 rounded-full text-sm">
-//           {job.type}
-//         </span>
-//       </div>
-//       {isExpanded && (
-//         <motion.div
-//           initial={{ opacity: 0, height: 0 }}
-//           animate={{ opacity: 1, height: "auto" }}
-//           exit={{ opacity: 0, height: 0 }}
-//           transition={{ duration: 0.3 }}
-//           className="mt-4"
-//         >
-//           <p className="text-gray-300">{job.description}</p>
-//           <motion.button
-//             className="mt-4 bg-gradient-to-r from-emerald-500 to-purple-500 text-white px-6 py-2 rounded-full font-semibold hover:from-emerald-600 hover:to-purple-600 transition-all duration-300"
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//           >
-//             Apply Now
-//           </motion.button>
-//         </motion.div>
-//       )}
-//     </motion.div>
-//   );
-// };
 export default function Career() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -118,7 +62,7 @@ export function CareerPage() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <Heading
-            size={{ initial: "7", md: "9" }}
+            size={{ initial: "7", md: "8" }}
             className="mb-8"
             align={"center"}
             color="purple"
