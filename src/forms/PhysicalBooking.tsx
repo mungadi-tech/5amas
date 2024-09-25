@@ -19,7 +19,7 @@ const locations = ["Abuja", "Lagos"];
 const plan_type = [
   "Single Table",
   "Double Table",
-  "Work Station 4",
+  "Work Station for 4",
   "Small Exec Office",
   "Big Exec Office",
   "Board Room",
