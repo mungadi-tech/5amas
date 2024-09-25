@@ -210,6 +210,7 @@ type VirtualKeyType = keyof VirtualType;
 export function BookOfficeSpace() {
   const [activeVirtualTab, setActiveVirtualTab] =
     useState<VirtualKeyType>("single");
+  const [open, onOpenChange] = useState(false);
 
   return (
     <div>
@@ -242,7 +243,7 @@ export function BookOfficeSpace() {
                   </li>
                 ))}
               </ul>
-              <Dialog.Root>
+              <Dialog.Root onOpenChange={onOpenChange} open={open}>
                 <Dialog.Trigger>
                   <motion.button
                     className="mt-6 w-full rounded-full bg-gradient-to-r from-red-500 to-purple-500 py-2 font-semibold text-white transition-all hover:from-blue-600 hover:to-emerald-600"
@@ -255,10 +256,13 @@ export function BookOfficeSpace() {
                 <Dialog.Content
                   //   width={"100%"}
                   minWidth={"98%"}
-                  maxHeight={"40rem"}
-                  className="bg-gradient-to-br from-purple-900 via-red-800 to-purple-900 text-white"
+                  // maxHeight={"40rem"}
+                  className="bg-gradient-to-br max-h-[48rem] md:max-h-[55rem] from-purple-900 via-red-800 to-purple-900 text-white"
                 >
-                  <Booking isPhysical />
+                  <Booking
+                    isPhysical
+                    onOpenChange={() => onOpenChange(false)}
+                  />
                 </Dialog.Content>
               </Dialog.Root>
             </motion.div>
@@ -328,7 +332,7 @@ export function BookOfficeSpace() {
                     </li>
                   ))}
                 </ul>
-                <Dialog.Root>
+                <Dialog.Root onOpenChange={onOpenChange} open={open}>
                   <Dialog.Trigger>
                     <motion.button
                       className="mt-6 w-full rounded-full bg-gradient-to-r from-red-500 to-purple-500 py-2 font-semibold text-white transition-all hover:from-blue-600 hover:to-emerald-600"
@@ -344,7 +348,10 @@ export function BookOfficeSpace() {
                     maxHeight={"40rem"}
                     className="bg-gradient-to-br from-purple-900 via-red-800 to-purple-900 text-white"
                   >
-                    <Booking isPhysical={false} />
+                    <Booking
+                      isPhysical={false}
+                      onOpenChange={() => onOpenChange(false)}
+                    />
                   </Dialog.Content>
                 </Dialog.Root>
               </motion.div>

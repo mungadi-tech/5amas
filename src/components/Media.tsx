@@ -111,7 +111,7 @@ export function EnhancedFuturisticGallery() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden text-white" ref={containerRef}>
+    <div className="mb-10 overflow-hidden text-white" ref={containerRef}>
       {/* Animated Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900 to-purple-900 opacity-50"></div>

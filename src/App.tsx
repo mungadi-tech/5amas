@@ -1,15 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 import { NavBarSection } from "./components/Navbar";
 import About from "./pages/About";
-import Index from "./pages/Index";
+import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import Food from "./pages/Food";
 import Foundation from "./pages/Foundation";
-import Tech from "./pages/Tech";
+import Index from "./pages/Index";
+import Media from "./pages/Media";
 import Resources from "./pages/Resources";
 import Team from "./pages/Team";
-import Career from "./pages/Career";
-import Media from "./pages/Media";
+import Tech from "./pages/Tech";
+import { Dashboard } from "./pages/admin/Dashboard";
+import Inbox from "./pages/admin/Inbox";
+import Login from "./pages/admin/Login";
+import PhysicalBookings from "./pages/admin/PhysicalBookings";
+import VirtualBookings from "./pages/admin/VirtualBooking";
 
 function App() {
   return (
@@ -26,6 +31,12 @@ function App() {
         <Route element={<Team />} path="/team" />
         <Route element={<Career />} path="/career" />
         <Route element={<Media />} path="/media" />
+        <Route element={<Login />} path="/login" />
+        <Route element={<Dashboard />} path="/admin">
+          <Route element={<Inbox />} index />
+          <Route element={<PhysicalBookings />} path="physical_bookings" />
+          <Route element={<VirtualBookings />} path="virtual_bookings" />
+        </Route>
       </Routes>
     </>
   );

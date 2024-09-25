@@ -43,6 +43,7 @@ export function NavBarSection() {
       disableAnimation
       isBordered
       height={"5rem"}
+      maxWidth="2xl"
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
@@ -148,9 +149,9 @@ export function NavBarSection() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <Link to={"/foundation"}>
-            <Button radius="full">
-              <span className="hidden md:block">5Amas</span> Foundation
+          <Link to={"/resources"}>
+            <Button radius="full" size={"4"}>
+              Book a space
             </Button>
           </Link>
         </NavbarItem>

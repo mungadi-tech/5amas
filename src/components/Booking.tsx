@@ -31,7 +31,13 @@ const Particle = () => {
   );
 };
 
-export function Booking({ isPhysical }: { isPhysical: boolean }) {
+export function Booking({
+  isPhysical,
+  onOpenChange,
+}: {
+  isPhysical: boolean;
+  onOpenChange: () => void;
+}) {
   return (
     <div className="flex flex-col-reverse md:flex-row md:justify-around gap-6 items-center">
       {/* Particle effect */}
@@ -46,7 +52,11 @@ export function Booking({ isPhysical }: { isPhysical: boolean }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {isPhysical ? <PhysicalBooking /> : <VirtualBooking />}
+          {isPhysical ? (
+            <PhysicalBooking onOpenChange={onOpenChange} />
+          ) : (
+            <VirtualBooking onOpenChange={onOpenChange} />
+          )}
         </motion.div>
       </div>
       <div>
@@ -61,6 +71,7 @@ export function Booking({ isPhysical }: { isPhysical: boolean }) {
             {isPhysical ? "Physical Office" : "Virtual Office"}
           </span>
         </motion.h1>
+
         <Card
           variant="ghost"
           style={{
@@ -74,7 +85,7 @@ export function Booking({ isPhysical }: { isPhysical: boolean }) {
             <img
               src={photo}
               alt=""
-              className="mx-auto rounded-full size-[10rem] mb-8"
+              className="mx-auto rounded-full size-[10rem] mb-8 hidden md:block"
             />
           </Inset>
 

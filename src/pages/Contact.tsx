@@ -1,7 +1,6 @@
-import { Card, Heading, Text, TextArea, TextField } from "@radix-ui/themes";
+import { Card, Heading, Text } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   ChevronDown,
   ChevronUp,
   Facebook,
@@ -15,16 +14,17 @@ import {
 import { useEffect, useState } from "react";
 import mapp from "../assets/mapp.png";
 import { Footer } from "../components/Footer";
+import { ContactForm } from "../forms/ContactForm";
 
 export default function FuturisticContactAndSupport() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [, setMousePosition] = useState({ x: 0, y: 0 });
 
-  mousePosition;
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
+
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
@@ -89,63 +89,7 @@ export default function FuturisticContactAndSupport() {
           >
             <h2 className="mb-6 text-2xl font-bold">Send Us a Message</h2>
             <Card>
-              <form className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-1 block text-sm font-medium"
-                  >
-                    Name
-                  </label>
-                  <TextField.Root id="name" name="name" required />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-1 block text-sm font-medium"
-                  >
-                    Email
-                  </label>
-                  <TextField.Root
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="mb-1 block text-sm font-medium"
-                  >
-                    Subject
-                  </label>
-                  <TextField.Root
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-1 block text-sm font-medium"
-                  >
-                    Message
-                  </label>
-                  <TextArea id="message" name="message" rows={4} required />
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  type="submit"
-                  className="inline-flex items-center rounded-md bg-gradient-to-r from-purple-500 to-emerald-500 px-4 py-2 text-white hover:from-purple-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-                >
-                  Send Message
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </motion.button>
-              </form>
+              <ContactForm />
             </Card>
           </motion.div>
 

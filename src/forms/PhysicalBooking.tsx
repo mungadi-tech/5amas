@@ -1,19 +1,32 @@
-import { Text } from "@radix-ui/themes";
+import { Button, Flex, Text } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { zodValidator } from "@tanstack/zod-form-adapter";
-import { motion } from "framer-motion";
-import { Calendar, MapPin, Phone, User } from "lucide-react";
+import {
+  Building,
+  Calendar,
+  Mail,
+  MailCheck,
+  MapPin,
+  Phone,
+  User,
+} from "lucide-react";
+import { toast } from "sonner";
 import { z } from "zod";
+import supabase from "../supabase/supabase";
 import { FieldError } from "./FieldError";
 
 const locations = ["Abuja", "Lagos"];
 const plan_type = ["Abuja", "Lagos"];
 
-export function PhysicalBooking() {
+export function PhysicalBooking({
+  onOpenChange,
+}: {
+  onOpenChange: () => void;
+}) {
   const form = useForm({
     defaultValues: {
       location: "",
-      name: "",
+      full_name: "",
       plan_type: "",
       message: "",
       date: "",
@@ -24,7 +37,15 @@ export function PhysicalBooking() {
     },
     validatorAdapter: zodValidator(),
     onSubmit: async ({ value }) => {
-      console.log(value);
+      const { error } = await supabase.from("physical_booking").insert(value);
+      if (error?.message) {
+        toast.error(error.message);
+      } else {
+        onOpenChange();
+        toast.success(
+          "Booking successfull, our agent will get back to you as soon as possible"
+        );
+      }
     },
   });
 
@@ -38,14 +59,14 @@ export function PhysicalBooking() {
       className="space-y-2"
     >
       <form.Field
-        name="name"
+        name="full_name"
         validators={{ onBlur: z.string({ message: "required" }) }}
       >
         {(field) => (
           <div>
             <Text
               size={"1"}
-              htmlFor="date"
+              htmlFor={field.name}
               className="mb-2 block text-sm font-medium"
             >
               Full Name
@@ -75,7 +96,7 @@ export function PhysicalBooking() {
             <div>
               <Text
                 size={"1"}
-                htmlFor="date"
+                htmlFor={field.name}
                 className="mb-2 block text-sm font-medium"
               >
                 Date
@@ -92,23 +113,19 @@ export function PhysicalBooking() {
                   className="w-full rounded-md border border-purple-600 bg-purple-900 bg-opacity-50 py-2 pl-10 pr-3 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
-              {field.state.meta.isTouched && field.state.meta.errors.length && (
-                <p className="mt-1 text-sm text-red-400">
-                  {field.state.meta.errors}
-                </p>
-              )}
+              <FieldError field={field} />
             </div>
           )}
         </form.Field>
         <form.Field
           name="number_of_attendants"
-          validators={{ onBlur: z.string({ message: "required" }) }}
+          validators={{ onBlur: z.number() }}
         >
           {(field) => (
             <div>
               <Text
                 size={"1"}
-                htmlFor="date"
+                htmlFor={field.name}
                 className="mb-2 block text-sm font-medium"
               >
                 No. of attendees
@@ -125,11 +142,7 @@ export function PhysicalBooking() {
                   className="w-full rounded-md border border-purple-600 bg-purple-900 bg-opacity-50 py-2 pl-10 pr-3 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
-              {field.state.meta.isTouched && field.state.meta.errors.length && (
-                <p className="mt-1 text-sm text-red-400">
-                  {field.state.meta.errors}
-                </p>
-              )}
+              <FieldError field={field} />
             </div>
           )}
         </form.Field>
@@ -145,13 +158,13 @@ export function PhysicalBooking() {
             <div>
               <Text
                 size={"1"}
-                htmlFor="date"
+                htmlFor={field.name}
                 className="mb-2 block text-sm font-medium"
               >
                 Email
               </Text>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-red-300" />
+                <Mail className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-red-300" />
                 <input
                   type="email"
                   id={field.name}
@@ -162,11 +175,7 @@ export function PhysicalBooking() {
                   className="w-full rounded-md border border-purple-600 bg-purple-900 bg-opacity-50 py-2 pl-10 pr-3 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
-              {field.state.meta.isTouched && field.state.meta.errors.length && (
-                <p className="mt-1 text-sm text-red-400">
-                  {field.state.meta.errors}
-                </p>
-              )}
+              <FieldError field={field} />
             </div>
           )}
         </form.Field>
@@ -183,7 +192,7 @@ export function PhysicalBooking() {
             <div>
               <Text
                 size={"1"}
-                htmlFor="date"
+                htmlFor={field.name}
                 className="mb-2 block text-sm font-medium"
               >
                 Phone
@@ -200,11 +209,7 @@ export function PhysicalBooking() {
                   className="w-full rounded-md border border-purple-600 bg-purple-900 bg-opacity-50 py-2 pl-10 pr-3 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
-              {field.state.meta.isTouched && field.state.meta.errors.length && (
-                <p className="mt-1 text-sm text-red-400">
-                  {field.state.meta.errors}
-                </p>
-              )}
+              <FieldError field={field} />
             </div>
           )}
         </form.Field>
@@ -218,7 +223,7 @@ export function PhysicalBooking() {
             <div>
               <Text
                 size={"1"}
-                htmlFor="location"
+                htmlFor={field.name}
                 className="mb-2 block text-sm font-medium"
               >
                 Location
@@ -241,11 +246,7 @@ export function PhysicalBooking() {
                   ))}
                 </select>
               </div>
-              {field.state.meta.isTouched && field.state.meta.errors.length && (
-                <p className="mt-1 text-sm text-red-400">
-                  {field.state.meta.errors}
-                </p>
-              )}
+              <FieldError field={field} />
             </div>
           )}
         </form.Field>
@@ -258,7 +259,7 @@ export function PhysicalBooking() {
             <div>
               <Text
                 size={"1"}
-                htmlFor="location"
+                htmlFor={field.name}
                 className="mb-2 block text-sm font-medium"
               >
                 Plan Type
@@ -281,11 +282,7 @@ export function PhysicalBooking() {
                   ))}
                 </select>
               </div>
-              {field.state.meta.isTouched && field.state.meta.errors.length && (
-                <p className="mt-1 text-sm text-red-400">
-                  {field.state.meta.errors}
-                </p>
-              )}
+              <FieldError field={field} />
             </div>
           )}
         </form.Field>
@@ -300,15 +297,15 @@ export function PhysicalBooking() {
           <div>
             <Text
               size={"1"}
-              htmlFor="date"
+              htmlFor={field.name}
               className="mb-2 block text-sm font-medium"
             >
               Company
             </Text>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-red-300" />
+              <Building className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-red-300" />
               <input
-                type="email"
+                type="text"
                 id={field.name}
                 name={field.name}
                 value={field.state.value}
@@ -317,11 +314,7 @@ export function PhysicalBooking() {
                 className="w-full rounded-md border border-purple-600 bg-purple-900 bg-opacity-50 py-2 pl-10 pr-3 text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
               />
             </div>
-            {field.state.meta.isTouched && field.state.meta.errors.length && (
-              <p className="mt-1 text-sm text-red-400">
-                {field.state.meta.errors}
-              </p>
-            )}
+            <FieldError field={field} />
           </div>
         )}
       </form.Field>
@@ -333,13 +326,13 @@ export function PhysicalBooking() {
           <div>
             <Text
               size={"1"}
-              htmlFor="date"
+              htmlFor={field.name}
               className="mb-2 block text-sm font-medium"
             >
               Message
             </Text>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-red-300" />
+              <MailCheck className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-red-300" />
               <textarea
                 id={field.name}
                 name={field.name}
@@ -353,47 +346,22 @@ export function PhysicalBooking() {
           </div>
         )}
       </form.Field>
-      <form.Subscribe
-        selector={(state) => [state.canSubmit, state.isSubmitting]}
-      >
-        {([canSubmit, isSubmitting]) => (
-          <motion.button
-            type="submit"
-            className="w-full rounded-full bg-gradient-to-r from-red-500 to-purple-500 py-2 px-4 font-semibold text-white transition-all hover:from-red-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-purple-900"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            disabled={isSubmitting || !canSubmit}
-          >
-            {isSubmitting ? (
-              <span className="flex items-center justify-center">
-                <svg
-                  className="mr-2 h-5 w-5 animate-spin text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Booking...
-              </span>
-            ) : (
-              "Book Now"
-            )}
-          </motion.button>
-        )}
-      </form.Subscribe>
+      <Flex justify={"end"} mt={"4"}>
+        <form.Subscribe
+          selector={(state) => [state.canSubmit, state.isSubmitting]}
+        >
+          {([canSubmit, isSubmitting]) => (
+            <Button
+              size={"4"}
+              type="submit"
+              loading={isSubmitting}
+              disabled={isSubmitting || !canSubmit}
+            >
+              Book Now
+            </Button>
+          )}
+        </form.Subscribe>
+      </Flex>
     </form>
   );
 }

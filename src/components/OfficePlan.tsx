@@ -11,7 +11,7 @@ export default function FuturisticPricingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Future-Ready
+          Future-Ready{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
             Office Solutions
           </span>
