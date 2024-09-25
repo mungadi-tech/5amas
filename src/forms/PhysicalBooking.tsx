@@ -16,7 +16,14 @@ import supabase from "../supabase/supabase";
 import { FieldError } from "./FieldError";
 
 const locations = ["Abuja", "Lagos"];
-const plan_type = ["Abuja", "Lagos"];
+const plan_type = [
+  "Single Table",
+  "Double Table",
+  "Work Station 4",
+  "Small Exec Office",
+  "Big Exec Office",
+  "Board Room",
+];
 
 export function PhysicalBooking({
   onOpenChange,

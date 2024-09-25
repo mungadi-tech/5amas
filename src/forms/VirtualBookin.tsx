@@ -17,7 +17,18 @@ import { toast } from "sonner";
 
 const locations = ["Abuja", "Lagos"];
 const plan_type = ["Single Plan", "Dou Plan"];
-const virtual_type = ["Virtual Startup", "Virtual Startup Max"];
+const virtual_type = [
+  "Virtual Startup",
+  "Virtual Startup Max",
+  "Virtual Flexi",
+  "Virtual Flexi Max",
+  "Virtual Startup Max",
+  "Virtual Startup Duo",
+  "Virtual Startup Max Duo",
+  "Virtual Flexi Duo",
+  "Virtual Flexi Max Duo",
+  "Virtual Startup Max Duo",
+];
 
 export function VirtualBooking({ onOpenChange }: { onOpenChange: () => void }) {
   const form = useForm({
