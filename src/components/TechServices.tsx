@@ -69,14 +69,14 @@ export function TechService() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   return (
-    <div className="bg-gradient-to-br text-red">
+    <div className="bg-gradient-to-br text-blue">
       <header className="text-center">
         <h1 className="mb-4 text-4xl font-bold sm:text-5xl lg:text-6xl">
-          5amas <span className="text-gray-700">Resources</span>
+          5amas <span className="text-gray-700">Technology</span>
         </h1>
         <p className="mx-auto max-w-2xl text-xl text-gray-500">
-          Discover our comprehensive range of services and resources designed to
-          meet your diverse needs
+          Empowering businesses with cutting-edge technology solutions to drive
+          growth and innovation.
         </p>
       </header>
 
@@ -90,7 +90,7 @@ export function TechService() {
           {resources.map((resource, index) => (
             <motion.div
               key={index}
-              className="rounded-lg bg-red-500 p-6 shadow-lg"
+              className="rounded-lg bg-blue-500 p-6 shadow-lg"
               variants={itemVariants}
             >
               <div className="mb-4 flex items-center justify-between">
@@ -98,7 +98,7 @@ export function TechService() {
                   <IconButton
                     radius="full"
                     variant="ghost"
-                    style={{ background: "white", color: "red" }}
+                    style={{ background: "white", color: "blue" }}
                   >
                     <resource.icon />
                   </IconButton>
@@ -122,14 +122,14 @@ export function TechService() {
                   {expandedCategory === resource.category ? (
                     <IconButton
                       radius="full"
-                      style={{ backgroundColor: "white", color: "red" }}
+                      style={{ backgroundColor: "white", color: "blue" }}
                     >
                       <ChevronUp />
                     </IconButton>
                   ) : (
                     <IconButton
                       radius="full"
-                      style={{ backgroundColor: "white", color: "red" }}
+                      style={{ backgroundColor: "white", color: "blue" }}
                     >
                       <ChevronDown />
                     </IconButton>
