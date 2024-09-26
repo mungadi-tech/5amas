@@ -148,7 +148,7 @@ export function TechService() {
                 style={{ overflow: "hidden" }}
               >
                 {resource.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="text-gray-100">
+                  <li key={itemIndex} className="text-white">
                     {item}
                   </li>
                 ))}
