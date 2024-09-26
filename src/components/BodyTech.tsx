@@ -1,4 +1,5 @@
 import { Heading, Text } from "@radix-ui/themes";
+import { TechService } from "./TechServices";
 
 export default function BodyTech() {
   return (
@@ -23,7 +24,7 @@ export default function BodyTech() {
           </Text>
         </div>
       </div>
-      <section className="py-16 lg:py-24 flex flex-col-reverse md:grid md:grid-cols-2 md:gap-20 gap-10 px-4"></section>
+      <TechService />
     </main>
   );
 }
