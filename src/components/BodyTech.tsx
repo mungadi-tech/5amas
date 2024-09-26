@@ -14,15 +14,12 @@ export default function BodyTech() {
         </Heading>
         <div className="mx-auto md:max-w-3xl text-center text-lg text-gray-600">
           <Text align={"center"} size={"2"}>
-            At 5AMAS Foods, we blend innovation and sustainability to deliver
-            excellence in agriculture, consumer goods, and catering services.
-            From sourcing the freshest ingredients from local farmers to
-            providing top-tier corporate and event catering, we are committed to
-            quality and customer satisfaction. Our focus on sustainability
-            ensures that every product supports local communities and promotes a
-            healthier, more sustainable food system. Whether it's white-label
-            services or indoor/outdoor event catering, 5AMAS Foods is dedicated
-            to delivering fresh, high-quality solutions for every need.
+            The 5amas Technologies Ltd cater to the information, communication,
+            and entertainment needs of global business houses to SMEs, as well
+            as millions of consumers. We aspire to be a driving force behind
+            West African digital transformation. Our mission is to empower
+            businesses and individuals with world-class telecommunications
+            solutions rendering quality services.
           </Text>
         </div>
       </div>
