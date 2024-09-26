@@ -76,7 +76,7 @@ const AmenityCard = ({
 
 export function AmenitiesSection() {
   return (
-    <section className="text-white">
+    <section className="text-white mb-8">
       <div className="container mx-auto px-4">
         <motion.h2
           className="mb-12 text-center text-4xl font-bold"

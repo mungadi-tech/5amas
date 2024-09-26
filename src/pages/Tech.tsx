@@ -1,13 +1,13 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
-import { Body } from "../components/Body";
 import { Footer } from "../components/Footer";
 import { HeroSectionTech } from "../components/HeroTech";
+import BodyTech from "../components/BodyTech";
 
 export default function Tech() {
   return (
     <div>
       <HeroSectionTech />
-      <Body />
+      <BodyTech />
       <Footer
         Ficon={<Facebook />}
         Ticon={<Twitter />}

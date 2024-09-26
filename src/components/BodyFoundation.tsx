@@ -19,7 +19,7 @@ const ProjectCard = ({
 
   return (
     <motion.div
-      className="bg-indigo-900 bg-opacity-50 h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+      className="bg-cyan-900 bg-opacity-50 h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
       onHoverStart={() => {
@@ -39,7 +39,7 @@ const ProjectCard = ({
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-indigo-200 mb-2">{title}</h3>
+        <h3 className="text-xl font-semibold text-cyan-200 mb-2">{title}</h3>
         <p>{description}</p>
       </div>
     </motion.div>
@@ -62,9 +62,9 @@ const StatItem = ({
     viewport={{ once: true, amount: 0.5 }}
     transition={{ duration: 0.5 }}
   >
-    <div className="w-8 h-8 mx-auto mb-2 text-indigo-400">{icon}</div>
+    <div className="w-8 h-8 mx-auto mb-2 text-cyan-400">{icon}</div>
     <motion.div
-      className="text-3xl font-bold text-indigo-200 mb-1"
+      className="text-3xl font-bold text-cyan-200 mb-1"
       initial={{ scale: 1 }}
       whileInView={{ scale: [1, 1.2, 1] }}
       viewport={{ once: true, amount: 0.5 }}
@@ -72,7 +72,7 @@ const StatItem = ({
     >
       {value}
     </motion.div>
-    <div className="text-indigo-300">{label}</div>
+    <div className="text-cyan-300">{label}</div>
   </motion.div>
 );
 
@@ -105,7 +105,7 @@ export function FoundationPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 text-white py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-900 via-purple-900 to-cyan-800 text-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.header
           className="text-center mb-20"
@@ -120,12 +120,13 @@ export function FoundationPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             5amas Group
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+              {" "}
               Foundation
             </span>
           </motion.h1>
           <motion.p
-            className="text-xl text-indigo-200 max-w-3xl mx-auto"
+            className="text-xl text-cyan-200 max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
@@ -184,11 +185,11 @@ export function FoundationPage() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-indigo-800 bg-opacity-50 rounded-2xl p-8 backdrop-blur-lg">
+          <div className="bg-cyan-800 bg-opacity-50 rounded-2xl p-8 backdrop-blur-lg">
             <h2 className="text-3xl font-semibold mb-4 text-center">
               Our Mission
             </h2>
-            <p className="text-indigo-200 text-center max-w-3xl mx-auto">
+            <p className="text-cyan-200 text-center max-w-3xl mx-auto">
               At 5amas Group Foundation, we strive to harness the power of
               cutting-edge technology and innovation to address global
               challenges. Our mission is to create sustainable solutions that
@@ -204,16 +205,16 @@ export function FoundationPage() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-center">
+          <div className="bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl p-8 text-center">
             <h2 className="text-3xl font-semibold mb-4">Join Our Cause</h2>
-            <p className="text-indigo-200 mb-6 max-w-2xl mx-auto">
+            <p className="text-cyan-200 mb-6 max-w-2xl mx-auto">
               Your support can help us continue our vital work and expand our
               reach. Together, we can make a lasting impact on communities
               around the world.
             </p>
             <motion.a
               href="#donate"
-              className="inline-flex items-center px-6 py-3 rounded-full bg-white text-indigo-700 font-semibold text-lg transition duration-300 ease-in-out hover:bg-indigo-100"
+              className="inline-flex items-center px-6 py-3 rounded-full bg-white text-cyan-700 font-semibold text-lg transition duration-300 ease-in-out hover:bg-cyan-100"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 0px 8px rgb(255,255,255)",

@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 
 export function HeroSectionTech() {
   return (
-    <section
-      id="herotech"
-      className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white"
-    >
+    <section id="herotech" className="relative overflow-hidden text-gray-700">
       <div className="container mx-auto px-4 py-20 sm:py-24 lg:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,9 +13,9 @@ export function HeroSectionTech() {
         >
           <h1 className="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
             Innovating Across Industries, <br />
-            <span className="text-emerald-400">Shaping Tomorrow</span>
+            <span className="text-blue-900">Shaping Tomorrow</span>
           </h1>
-          <p className="mb-8 text-lg text-gray-300 sm:text-xl">
+          <p className="mb-8 text-lg text-gray-500 sm:text-xl">
             5amas Group: A dynamic holding company driving strategic growth and
             sustainable development in investment, food, and technology sectors.
           </p>
@@ -26,7 +23,7 @@ export function HeroSectionTech() {
             href="#learn-more"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center rounded-full bg-emerald-500 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-emerald-600"
+            className="inline-flex items-center rounded-full bg-blue-500 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-blue-700"
           >
             Discover Our Portfolio
             <ArrowRight className="ml-2 h-5 w-5" />

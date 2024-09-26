@@ -5,7 +5,7 @@ export function HeroSectionFoundation() {
   return (
     <section
       id="herofoundation"
-      className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+      className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-gray-700"
     >
       <div className="container mx-auto px-4 py-20 sm:py-24 lg:py-32">
         <motion.div
@@ -14,11 +14,11 @@ export function HeroSectionFoundation() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <h1 className="mb-6 text-4xl font-extrabold text-blue-900 leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
             Innovating Across Industries, <br />
-            <span className="text-gray-400">Shaping Tomorrow</span>
+            <span className="text-cyan-600">Shaping Tomorrow</span>
           </h1>
-          <p className="mb-8 text-lg text-gray-300 sm:text-xl">
+          <p className="mb-8 text-lg text-gray-600 sm:text-xl">
             5amas Group: A dynamic holding company driving strategic growth and
             sustainable development in investment, food, and technology sectors.
           </p>
@@ -26,7 +26,7 @@ export function HeroSectionFoundation() {
             href="/media"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center rounded-full bg-blue-900 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-blue-600"
+            className="inline-flex items-center rounded-full bg-cyan-700 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-cyan-600"
           >
             Our Projects
             <ArrowRight className="ml-2 h-5 w-5" />

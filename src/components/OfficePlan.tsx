@@ -29,7 +29,7 @@ export default function FuturisticPricingPage() {
             Experience the future of work with our innovative office solutions.
           </p>
           <motion.a
-            href="#contact"
+            href="/contact"
             className="inline-block rounded-full bg-white px-8 py-3 text-lg font-semibold text-purple-900 transition-colors hover:bg-blue-100"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
