@@ -71,8 +71,8 @@ export function TechService() {
   return (
     <div className="bg-gradient-to-br text-blue">
       <header className="text-center">
-        <h1 className="mb-4 text-4xl font-bold sm:text-5xl lg:text-6xl">
-          5amas <span className="text-gray-700">Technology</span>
+        <h1 className="mb-4 text-4xl font-bold sm:text-5xl lg:text-6xl ">
+          5amas <span className="text-blue-600">Technology</span>
         </h1>
         <p className="mx-auto max-w-2xl text-xl text-gray-500">
           Empowering businesses with cutting-edge technology solutions to drive
