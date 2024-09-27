@@ -144,19 +144,18 @@ export default function About() {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="overflow-hidden rounded-lg bg-white shadow-lg"
+                className="overflow-hidden rounded-lg w-full  bg-white shadow-lg mx-auto"
               >
-                <img
-                  src={leader.image}
-                  alt={leader.name}
-                  width={300}
-                  height={400}
-                  className="w-full object-cover"
-                />
+                <Inset>
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="w-full md:h-[20rem]"
+                  />
+                </Inset>
+
                 <div className="p-4 text-center">
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {leader.name}
-                  </h3>
+                  <Heading size={"3"}>{leader.name}</Heading>
                   <p className="text-purple-700">{leader.title}</p>
                 </div>
               </motion.div>
@@ -249,7 +248,7 @@ function CoreValues() {
                   variant="ghost"
                   style={{
                     background: "var(--accent-11)",
-                    height: "18rem",
+                    height: "22rem",
                   }}
                 >
                   <Inset clip="padding-box" side="top" pb="current">
@@ -411,7 +410,7 @@ function CoreValues() {
                   style={{
                     width: "30rem",
                     background: "var(--accent-11)",
-                    height: "24rem",
+                    height: "26rem",
                   }}
                 >
                   <Inset clip="padding-box" side="top" pb="current">
@@ -436,7 +435,7 @@ function CoreValues() {
                   style={{
                     width: "30rem",
                     background: "var(--accent-11)",
-                    height: "24rem",
+                    height: "26rem",
                   }}
                 >
                   <Inset clip="padding-box" side="top" pb="current">
@@ -463,7 +462,7 @@ function CoreValues() {
                   style={{
                     width: "30rem",
                     background: "var(--accent-11)",
-                    height: "24rem",
+                    height: "26rem",
                   }}
                 >
                   <Inset clip="padding-box" side="top" pb="current">
@@ -489,7 +488,7 @@ function CoreValues() {
                   style={{
                     width: "30rem",
                     background: "var(--accent-11)",
-                    height: "24rem",
+                    height: "26rem",
                   }}
                 >
                   <Inset clip="padding-box" side="top" pb="current">
@@ -514,7 +513,7 @@ function CoreValues() {
                   style={{
                     width: "30rem",
                     background: "var(--accent-11)",
-                    height: "24rem",
+                    height: "26rem",
                   }}
                 >
                   <Inset clip="padding-box" side="top" pb="current">
