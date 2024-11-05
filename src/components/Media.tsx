@@ -132,7 +132,7 @@ export function EnhancedFuturisticGallery() {
 
       {/* Header */}
       <motion.header
-        className="relative overflow-hidden py-20 text-center"
+        className="relative overflow-hidden py-10 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}

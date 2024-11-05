@@ -3,6 +3,7 @@ import { EnhancedFuturisticGallery } from "./Media";
 import ResourceService from "./ResourceService";
 import FuturisticPricingPage from "./OfficePlan";
 import { AmenitiesSection } from "./Amenities";
+import ResourceServiceHub from "./ResourceServiceHub";
 
 export function BodyResources() {
   return (
@@ -16,11 +17,17 @@ export function BodyResources() {
               className="mb-8 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-gray-600"
               align={"center"}
             >
-              Welcome to 5AMAS Resources
+              WELCOME TO 5AMAS HUB
             </Heading>
 
             <Container className="text-center">
               <Text align={"center"} size={"2"}>
+                5amas Hub is a premier business and innovation center offering a
+                range of services to support entrepreneurs, startups, and
+                established businesses. Our mission is to provide a conducive
+                environment for growth, collaboration, and success.
+              </Text>
+              {/* <Text align={"center"} size={"2"}>
                 5AMAS and Co Resources Ltd is a multifaceted investment company
                 that excels in various sectors, including real estate, trading,
                 office space solutions, capacity building, and financial
@@ -44,14 +51,16 @@ export function BodyResources() {
                 Co Resources Ltd combines its diverse expertise to create value
                 across sectors, helping clients achieve their financial goals
                 and supporting sustainable growth.
-              </Text>
+              </Text> */}
             </Container>
           </div>
         </section>
-        <ResourceService />
-        <AmenitiesSection />
         <EnhancedFuturisticGallery />
+        <ResourceServiceHub />
+
+        <AmenitiesSection />
         <FuturisticPricingPage />
+        <ResourceService />
       </main>
     </>
   );

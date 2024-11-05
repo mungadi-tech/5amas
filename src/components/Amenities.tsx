@@ -4,8 +4,9 @@ import {
   Car,
   Clock,
   Coffee,
+  DoorOpen,
+  Fan,
   HeadphonesIcon,
-  Mail,
   Shield,
   Wifi,
 } from "lucide-react";
@@ -13,8 +14,8 @@ import { ReactNode } from "react";
 
 const amenities = [
   {
-    icon: Mail,
-    name: "Mail Forwarding",
+    icon: Fan,
+    name: "Air-Conditioned Spaces",
     description: "Secure mail handling and forwarding services",
   },
   {
@@ -24,7 +25,7 @@ const amenities = [
   },
   {
     icon: HeadphonesIcon,
-    name: "Customer Support",
+    name: "Reception and Administrative Support",
     description: "24/7 dedicated customer support",
   },
   {
@@ -39,7 +40,7 @@ const amenities = [
   },
   {
     icon: Coffee,
-    name: "Lounge Access",
+    name: "Kitchen and Lounge Access",
     description: "Comfortable lounge areas for breaks and informal meetings",
   },
   {
@@ -51,6 +52,11 @@ const amenities = [
     icon: Shield,
     name: "Security",
     description: "State-of-the-art security systems for your peace of mind",
+  },
+  {
+    icon: DoorOpen,
+    name: "Meeting Room",
+    description: "State-of-the-art meeting rooms",
   },
 ];
 
