@@ -5,6 +5,7 @@ import foundation1 from "../assets/foundation1.png";
 import foundation2 from "../assets/foundation2.png";
 import foundation3 from "../assets/foundation3.png";
 import foundation4 from "../assets/foundation4.png";
+import eventImage from "../assets/toilet_day.jpeg";
 
 const ProjectCard = ({
   title,
@@ -107,6 +108,36 @@ export function FoundationPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-900 via-purple-900 to-cyan-800 text-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+         {/* Upcoming Events Section */}
+         <motion.div
+          className="flex flex-col md:flex-row bg-purple-800 bg-opacity-75 rounded-xl p-6 mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          id="world-toilet-day-event" 
+        >
+          <img
+            src={eventImage}
+            alt="World Toilet Day"
+            className="h-full md:w-1/2 h-60 object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
+          />
+          <div className="flex flex-col justify-center text-center md:text-left">
+            <h2 className="text-5xl font-semibold text-cyan-100 mb-2">Upcoming Event: World Toilet Day</h2>
+            <p className="text-cyan-200 mb-4 text-2xl">
+              Join us in raising awareness about global sanitation issues as we commemorate World Toilet Day. Let’s work together for a healthier, cleaner future.
+            </p>
+            <motion.a
+              href="#donate"
+              className="self-center md:self-start inline-flex items-center px-5 py-3 rounded-full bg-cyan-600 text-white font-semibold text-lg transition duration-300 ease-in-out hover:bg-cyan-500"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Donate Now
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </motion.a>
+          </div>
+        </motion.div>
+
         <motion.header
           className="text-center mb-20"
           initial={{ opacity: 0, y: -50 }}

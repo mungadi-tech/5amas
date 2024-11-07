@@ -1,11 +1,44 @@
+import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import image1 from "../assets/images/image1.jpeg";
+import image3 from "../assets/images/image3.jpeg";
+import image5 from "../assets/images/image5.jpeg";
+import image2 from "../assets/images/image2.jpeg";
+import image4 from "../assets/images/image4.jpeg";
+
+// Array of background images
+const images = [
+  image1, 
+  image3, 
+  image5, 
+  image2, 
+  image4
+  
+];
 
 export function HeroSection() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // Cycle through images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 5000); // 5000ms = 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   return (
     <section
       id="hero"
       className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+      style={{
+        backgroundImage: `url(${images[currentImage]})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        transition: "background-image 1s ease-in-out" // Smooth fade transition
+      }}
     >
       <div className="container mx-auto px-4 py-20 sm:py-24 lg:py-32">
         <motion.div
@@ -14,11 +47,14 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <h1 className="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl" style={{
+              textShadow: "2px 4px 6px rgba(0, 0, 0, 0.6)" }}>
             Innovating Across Industries, <br />
             <span className="text-purple-500">Shaping Tomorrow</span>
           </h1>
-          <p className="mb-8 text-lg text-gray-300 sm:text-xl">
+          <p className="mb-8 text-lg text-white-300 sm:text-xl"  style={{
+              textShadow: "1px 2px 4px rgba(0, 0, 0, 0.5)" // Subtle shadow for paragraph
+            }}>
             5amas Group: A dynamic holding company driving strategic growth and
             sustainable development in investment, food, and technology sectors.
           </p>

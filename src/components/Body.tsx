@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; 
 import { ArrowRight } from "lucide-react";
 import { SwapTextCard } from "./animata/card/swap-text-card";
 import { Heading, Text } from "@radix-ui/themes";
@@ -9,7 +12,31 @@ import r_logo from "../assets/resources_ogo.png";
 import t_logo from "../assets/technology_logo.png";
 import f_logo from "../assets/foundation_logo.png";
 
+// List of animations to choose from
+const animations = [
+  "fade-up",
+  "fade-down",
+  "fade-left",
+  "fade-right",
+  "zoom-in",
+  "zoom-out",
+  "flip-left",
+  "flip-right",
+];
+
+function getRandomAnimation() {
+  return animations[Math.floor(Math.random() * animations.length)];
+}
+
 export function Body() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Easing function for animations
+      once: true, // Only animate once
+    });
+  }, []);
+
   return (
     <>
       <main className="bg-white">
@@ -24,7 +51,10 @@ export function Body() {
             >
               About 5amas Group
             </Heading>
-            <div className="mx-auto max-w-3xl text-center text-lg text-gray-600">
+            <div
+              data-aos={getRandomAnimation()}
+              className="mx-auto max-w-3xl text-center text-lg text-gray-600"
+            >
               <Text align={"center"}>
                 5amas Group is a dynamic and innovative holding company
                 operating across multiple sectors. We focus on strategic growth
@@ -32,7 +62,10 @@ export function Body() {
                 change in the industries we operate in.
               </Text>
             </div>
-            <div className="mx-auto max-w-3xl text-center text-lg text-purple-500">
+            <div
+              data-aos={getRandomAnimation()}
+              className="mx-auto max-w-3xl text-center text-lg text-purple-500"
+            >
               <Link to={"/about"}>
                 <Text align={"center"}>Read More...</Text>
               </Link>
@@ -58,7 +91,6 @@ export function Body() {
                   link: "",
                   final_text:
                     "Empowering communities with sustainable solutions and opportunities.",
-
                   description:
                     "Multifaceted investment company offering tailored solutions and services",
                 },
@@ -67,7 +99,6 @@ export function Body() {
                   link: "",
                   final_text:
                     "Empowering communities with sustainable solutions and opportunities.",
-
                   description:
                     "5AMAS Foods offers agriculture, catering, and e-commerce solutions.",
                 },
@@ -76,7 +107,6 @@ export function Body() {
                   link: "",
                   final_text:
                     "Empowering communities with sustainable solutions and opportunities.",
-
                   description:
                     "Cutting-edge technological advancements and solutions",
                 },
@@ -84,33 +114,32 @@ export function Body() {
                   title: "Foundation",
                   link: "hahahah",
                   final_text:
-                    " Empowering communities with sustainable solutions and opportunities.",
+                    "Empowering communities with sustainable solutions and opportunities.",
                   description:
                     "Empowering communities with sustainable solutions and opportunities.",
                 },
               ].map((sector, index) => (
-                <SwapTextCard
-                  link={sector.link}
-                  key={index}
-                  title={sector.title}
-                  finalText={sector.final_text}
-                  initialText={sector.description}
-                />
+                <div key={index} data-aos={getRandomAnimation()}>
+                  <SwapTextCard
+                    link={sector.link}
+                    key={index}
+                    title={sector.title}
+                    finalText={sector.final_text}
+                    initialText={sector.description}
+                  />
+                </div>
               ))}
             </div>
           </div>
-        </section>
-        <section>
-          <Heading size={"8"} align={"center"} color="purple" mt={"9"}>
-            Our Partners
-          </Heading>
-          <MarqueeSection />
         </section>
 
         {/* Key Figures Section */}
         <section className="py-4 lg:py-10">
           <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center text-3xl font-bold text-purple-800 lg:text-4xl">
+            <h2
+              className="mb-12 text-center text-3xl font-bold text-purple-800 lg:text-4xl"
+              data-aos={getRandomAnimation()}
+            >
               Key Figures
             </h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -120,7 +149,11 @@ export function Body() {
                 { figure: "4", description: "Core Sectors" },
                 { figure: "100+", description: "Employees Worldwide" },
               ].map((stat, index) => (
-                <div key={index} className="text-center">
+                <div
+                  key={index}
+                  data-aos={getRandomAnimation()}
+                  className="text-center"
+                >
                   <p className="mb-2 text-4xl font-bold text-purple-600">
                     {stat.figure}
                   </p>
@@ -134,7 +167,10 @@ export function Body() {
         {/* Latest News Section */}
         <section className="py-4 lg:py-8">
           <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center text-3xl font-bold text-purple-600 lg:text-4xl">
+            <h2
+              className="mb-12 text-center text-3xl font-bold text-purple-600 lg:text-4xl"
+              data-aos={getRandomAnimation()}
+            >
               Latest News
             </h2>
             <div className="grid gap-8 md:grid-cols-3">
@@ -154,6 +190,7 @@ export function Body() {
               ].map((news, index) => (
                 <div
                   key={index}
+                  data-aos={getRandomAnimation()}
                   className="rounded-lg bg-[var(--accent-3)] p-6 shadow-md transition-all hover:shadow-lg"
                 >
                   <h3 className="mb-2 text-xl font-semibold text-gray-900">
@@ -173,58 +210,5 @@ export function Body() {
         </section>
       </main>
     </>
-  );
-}
-
-const reviews = [
-  {
-    img: fo_logo,
-  },
-  {
-    img: r_logo,
-  },
-  {
-    img: t_logo,
-  },
-  {
-    img: f_logo,
-  },
-];
-
-const ReviewCard = ({ img }: { img: string }) => {
-  return (
-    <figure
-      className={cn(
-        "relative cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <img
-          className="rounded-full"
-          width="100"
-          height="100"
-          alt=""
-          src={img}
-        />
-      </div>
-    </figure>
-  );
-};
-
-export function MarqueeSection() {
-  return (
-    <div className="relative flex h-[200px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background md:shadow-xl">
-      <Marquee pauseOnHover className="[--duration:20s]">
-        {reviews.map((review) => (
-          <ReviewCard key={review.img} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
-    </div>
   );
 }
