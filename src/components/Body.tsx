@@ -1,16 +1,10 @@
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 import { ArrowRight } from "lucide-react";
 import { SwapTextCard } from "./animata/card/swap-text-card";
 import { Heading, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
-import { Marquee } from "./magicui/marquee";
-import { cn } from "../lib/utils";
-import fo_logo from "../assets/food_logo.png";
-import r_logo from "../assets/resources_ogo.png";
-import t_logo from "../assets/technology_logo.png";
-import f_logo from "../assets/foundation_logo.png";
 
 // List of animations to choose from
 const animations = [

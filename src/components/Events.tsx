@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
 import eventImage from "../assets/toilet_day.jpeg"; // Replace with your actual image path
