@@ -127,7 +127,7 @@ export function FoundationPage() {
               Join us in raising awareness about global sanitation issues as we commemorate World Toilet Day. Let’s work together for a healthier, cleaner future.
             </p>
             <motion.a
-              href="#donate"
+              href="https://paystack.com/pay/qqtv1ujoh7"
               className="self-center md:self-start inline-flex items-center px-5 py-3 rounded-full bg-cyan-600 text-white font-semibold text-lg transition duration-300 ease-in-out hover:bg-cyan-500"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
