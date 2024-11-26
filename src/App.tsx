@@ -15,6 +15,7 @@ import Inbox from "./pages/admin/Inbox";
 import Login from "./pages/admin/Login";
 import PhysicalBookings from "./pages/admin/PhysicalBookings";
 import VirtualBookings from "./pages/admin/VirtualBooking";
+import BookASpace from "./pages/BookASpace";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route element={<Tech />} path="/tech" />
         <Route element={<Resources />} path="/resources" />
         <Route element={<Team />} path="/team" />
+        <Route element={<BookASpace />} path="/book-space"></Route>
         <Route element={<Career />} path="/career" />
         <Route element={<Media />} path="/media" />
         <Route element={<Login />} path="/login" />

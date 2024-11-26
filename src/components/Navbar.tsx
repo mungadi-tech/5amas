@@ -149,7 +149,7 @@ export function NavBarSection() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <Link to={"/resources"}>
+          <Link to={"/book-space"}>
             <Button radius="full" size={"4"}>
               Book a space
             </Button>
