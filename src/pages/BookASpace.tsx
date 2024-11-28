@@ -216,7 +216,7 @@ interface PaystackTransaction {
                   ))}
                 </ul>
                 <button
-                  className="bg-blue-600 text-white py-2 px-4 w-full rounded-md shadow-md hover:bg-blue-700 transition"
+                  className="bg-purple-500 text-white py-2 px-4 w-full rounded-md shadow-md hover:bg-purple-700 transition"
                   onClick={() => openModal(space)}
                 >
                   Book Now
@@ -280,7 +280,7 @@ interface PaystackTransaction {
               </p>
               <button
                 type="button"
-                className="bg-green-600 text-white py-2 px-4 rounded-md shadow-md w-full mt-4"
+                className="bg-purple-500 text-white py-2 px-4 rounded-md shadow-md w-full mt-4"
                 onClick={handlePayment}
               >
                 Proceed to Pay
