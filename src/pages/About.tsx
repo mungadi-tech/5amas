@@ -24,6 +24,9 @@ import gov from "../assets/pic3.jpg";
 import strategy from "../assets/strategy.jpg";
 import { Footer } from "../components/Footer";
 import { HeroHeader } from "../components/HeroHeader";
+import taj from "../assets/images/taj.jpg"
+import ibm from "../assets/images/ibm.jpg"
+import dera from "../assets/images/dera.jpg"
 
 export default function About() {
   return (
@@ -122,23 +125,23 @@ export default function About() {
               },
               {
                 name: "MULIKAT BELLO ",
-                title: "GM 5amas Food",
+                title: "Chief Marketing Officer",
                 image: mulikat,
               },
               {
-                name: "Abdurasheed Ibrahim",
-                title: "GM 5amas Foundation",
-                image: mulikat,
+                name: "Abubakar Ibrahim",
+                title: "Customer Relations Manager",
+                image: ibm,
               },
               {
                 name: "Tajudeen Arowolo",
-                title: "GM 5amas Technologies",
-                image: ceo,
+                title: "Chief Operating Officer",
+                image: taj,
               },
               {
                 name: "Darajah Abubakar",
-                title: "GM 5amas Resources",
-                image: ceo,
+                title: "Business Development Consultant",
+                image: dera,
               },
             ].map((leader, index) => (
               <motion.div
