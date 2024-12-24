@@ -27,7 +27,7 @@ const courses = [
       This course teaches advanced Excel techniques, data cleaning, Power Query, Power Pivot, and dashboard creation. 
       By the end, you'll be proficient in extracting actionable insights from data and presenting them visually.`,
     duration: '2 months',
-    fee: 180500,
+    fee: 250000,
     image: img2,
   },
   {
@@ -37,7 +37,7 @@ const courses = [
       Learn to process data efficiently, create powerful visualizations, and develop interactive dashboards 
       to support decision-making in your organization.`,
     duration: '2 months (Weekends)',
-    fee: 160000,
+    fee: 250000,
     image: img3,
   },
   {
