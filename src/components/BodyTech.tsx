@@ -1,154 +1,92 @@
-import { Card, Heading, Text, Button } from "@radix-ui/themes";
-import { Dialog, DialogTrigger, DialogContent, DialogClose } from "@radix-ui/react-dialog";
-// import { useState } from "react";
-import image1 from "../assets/data-ana.jpeg"
-import image2 from "../assets/full_dev.jpeg"
+import React from 'react';
+import { Link } from 'react-router-dom';
+import img1 from "../assets/cyber_security_updated_tmn9ga.jpg"
+import img2 from "../assets/data-exe.png"
+import img3 from "../assets/data_analytics_h1f8eo.png"
+import img4 from "../assets/machine_learning2_3q3v0n.png"
+import img5 from "../assets/website-designer1_q86cjl.png"
+import img6 from "../assets/programming-img1_eeqa1j.jpg"
 
-export default function BodyTech() {
+
+interface Course {
+  id: number;
+  title: string;
+  image: string;
+  buttonText: string;
+}
+
+const courses: Course[] = [
+  {
+    id: 1,
+    title: 'Cyber Security (Ethical Hacking)',
+    image: `${img1}`,
+    buttonText: 'Apply Now',
+  },
+  {
+    id: 2,
+    title: 'Data Analytics with Excel and Power BI',
+    image: `${img2}`,
+    buttonText: 'Apply Now',
+  },
+  {
+    id: 3,
+    title: 'Data Analytics with Excel and Power BI - Weekend',
+    image: `${img3}`,
+    buttonText: 'Apply Now',
+  },
+  {
+    id: 4,
+    title: 'Data Science & Machine Learning with Python',
+    image: `${img4}`,
+    buttonText: 'Apply Now',
+  },
+  {
+    id: 5,
+    title: 'Front-End Development with React',
+    image: `${img5}`,
+    buttonText: 'Apply Now',
+  },
+  {
+    id: 6,
+    title: 'Full Stack Web Development with Node',
+    image: `${img6}`,
+    buttonText: 'Apply Now',
+  },
+];
+
+const BodyTech: React.FC = () => {
   return (
-    <main className="bg-white">
-      {/* About Us Section */}
-      <div className="mx-auto px-4 my-10">
-        <Heading
-          size={{ initial: "6", md: "8" }}
-          className="mb-8 text-blue-500"
-          align={"center"}
-        >
-          Welcome to 5AMAS Technology
-        </Heading>
-        <div className="mx-auto md:max-w-3xl text-center text-lg text-gray-600">
-          <Text align={"center"} size={"2"}>
-            The 5amas Technologies Ltd cater to the information, communication,
-            and entertainment needs of global business houses to SMEs, as well
-            as millions of consumers. We aspire to be a driving force behind
-            West African digital transformation. Our mission is to empower
-            businesses and individuals with world-class telecommunications
-            solutions rendering quality services.
-          </Text>
-        </div>
+    <div className="py-10 px-4 max-w-7xl mx-auto">
+      <h2 className="text-center text-5xl text-purple-600 font-bold mb-4">Our Courses</h2>
+      <p className="text-center text-1xl text-gray-600 mb-8">
+        Our courses are carefully designed and structured to deliver the best quality to take you from beginner to advanced skill level.
+      </p>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course) => (
+          <div
+            key={course.id}
+            className="bg-white rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <img
+              src={course.image}
+              alt={course.title}
+              className="h-48 w-full object-cover rounded-t-lg"
+            />
+            <div className="p-6 flex flex-col">
+              <h3 className="text-lg font-semibold text-center mb-4">{course.title}</h3>
+              <Link to={`/course/${course.id}`}>
+                <button
+                  className="mt-auto bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+                >
+                  {course.buttonText}
+                </button>
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
-      <Courses />
-    </main>
+    </div>
   );
-}
+};
 
-function Courses() {
-  const courses = [
-    {
-      title: "Full Stack Development",
-      description:
-        "Learn to build robust web applications from scratch using modern technologies.",
-      startDate: "January",
-      image: `${image2}`,
-    },
-    {
-      title: "Data Analytics",
-      description:
-        "Master the skills to analyze data and derive actionable insights.",
-      startDate: "January",
-      image: `${image1}`,
-    },
-  ];
-
-  return (
-    <section className="w-full py-12 bg-gray-50">
-      <div className="container ">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-blue-900">
-            Courses We Offer
-          </h2>
-          <p className="max-w-[900px] text-zinc-700 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Join our courses starting this January to advance your career in
-            technology.
-          </p>
-        </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 md:grid-cols-2 md:gap-12">
-          {courses.map((course, index) => (
-            <Card key={index} className="w-full hover:shadow-xl transition-shadow duration-300">
-              <img src={course.image} alt={course.title} className="rounded-t-lg" />
-              <div className="flex flex-col space-y-4 p-4">
-                <Heading>{course.title}</Heading>
-                <p className="text-zinc-700">{course.description}</p>
-                <p className="text-zinc-500">
-                  <strong>Start Date:</strong> {course.startDate}
-                </p>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="solid">Apply Now</Button>
-                  </DialogTrigger>
-                  <DialogContent className="bg-white p-6 rounded-lg shadow-lg">
-                    <Heading size="4">Apply for {course.title}</Heading>
-                    <form onSubmit={(e) => handleApply(e, course.title)}>
-                      <div className="my-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                          Full Name
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full mt-1 p-2 border rounded"
-                        />
-                      </div>
-                      <div className="my-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          className="w-full mt-1 p-2 border rounded"
-                        />
-                      </div>
-                      <div className="my-4">
-                        <label className="block text-sm font-medium text-gray-700">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          required
-                          className="w-full mt-1 p-2 border rounded"
-                        />
-                      </div>
-                      <Button type="submit" variant="solid" className="mt-4">
-                        Submit
-                      </Button>
-                    </form>
-                    <DialogClose asChild>
-                      <Button variant="ghost" className="mt-4">
-                        Close
-                      </Button>
-                    </DialogClose>
-                  </DialogContent>
-                </Dialog>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function handleApply(event: React.FormEvent, courseTitle: string) {
-  event.preventDefault();
-  const form = event.target as HTMLFormElement;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
-
-  console.log(`Applying for ${courseTitle}`, data);
-
-  // Replace with actual API call
-  fetch("https://api.example.com/apply", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...data, courseTitle }),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      console.log("Application successful:", result);
-      alert("Application submitted successfully!");
-    })
-    .catch((error) => {
-      console.error("Error submitting application:", error);
-    });
-}
+export default BodyTech;
