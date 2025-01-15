@@ -16,7 +16,8 @@ import Login from "./pages/admin/Login";
 import PhysicalBookings from "./pages/admin/PhysicalBookings";
 import VirtualBookings from "./pages/admin/VirtualBooking";
 import BookASpace from "./pages/BookASpace";
-import CourseDetails from "./pages/CourseDetails";
+import CourseDetails from "./components/CourseDetail";
+import CourseGrid from "./components/CourseGrid";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route element={<Media />} path="/media" />
         <Route element={<Login />} path="/login" />
         <Route path="/course/:id" element={<CourseDetails />} />
+        <Route path="/course" element={<CourseGrid />} />
         <Route element={<Dashboard />} path="/admin">
           <Route element={<Inbox />} index />
           <Route element={<PhysicalBookings />} path="physical_bookings" />

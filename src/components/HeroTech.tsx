@@ -6,6 +6,7 @@ import image3 from "../assets/job.png";
 import image4 from "../assets/payment.png";
 import image5 from "../assets/hired.png";
 import image6 from "../assets/trained.png";
+import { Link } from "react-router-dom"; // Import Link from React Router
 
 const features = [
   {
@@ -48,9 +49,9 @@ export function HeroSectionTech() {
             </p>
 
             <div className="mt-6 flex gap-4">
-              <button className="px-8 py-3 border border-purple-500 text-purple-500 font-bold rounded-lg hover:bg-purple-50">
+            <Link to="/course" className="px-8 py-3 border border-purple-500 text-purple-500 font-bold rounded-lg hover:bg-purple-50">
                 Apply Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -163,9 +164,9 @@ export function HeroSectionTech() {
             curriculums are designed to take from Novice to Advanced skills
             level, no experience is needed to enroll.
           </p>
-          <button className="bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-purple-700 transition">
-            Apply Now
-          </button>
+          <Link to="/course" className="bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-purple-700 transition">
+              Apply Now
+            </Link>
         </div>
         {/* Image Section */}
         <div className="flex justify-center">
@@ -212,9 +213,9 @@ export function HeroSectionTech() {
               <p className="text-lg font-medium text-gray-800 leading-relaxed mb-8">
                 We are turning individuals without skills into world-class skilled tech talents.
               </p>
-              <button className="bg-purple-700 text-white font-bold py-4 px-8 text-lg rounded-lg shadow-lg hover:bg-purple-800 transition">
+              <Link to="/course" className="bg-purple-700 text-white font-bold py-4 px-8 text-lg rounded-lg shadow-lg hover:bg-purple-800 transition">
                 Apply Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
