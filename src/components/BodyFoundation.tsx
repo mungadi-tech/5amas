@@ -1,12 +1,147 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe, Heart, Users } from "lucide-react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import foundation1 from "../assets/foundation1.png";
 import foundation2 from "../assets/foundation2.png";
 import foundation3 from "../assets/foundation3.png";
 import foundation4 from "../assets/foundation4.png";
-import eventImage from "../assets/toilet_day.jpeg";
 
+
+// Define the type for the SkillAcquisitionModal props
+interface SkillAcquisitionModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+// SkillAcquisitionModal Component
+const SkillAcquisitionModal = ({ isOpen, onClose }: SkillAcquisitionModalProps) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    skill: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form Data Submitted:", formData);
+    onClose(); // Close the modal after submission
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+     <motion.div
+  className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+>
+  <motion.div
+    className="bg-white rounded-lg w-full max-w-md p-6"
+    initial={{ y: -50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -50, opacity: 0 }}
+  >
+    <h2 className="text-2xl font-semibold mb-4 text-black">Register for Free Skill Acquisition Program</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-1 text-black">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          className="w-full p-2 border rounded-lg text-black"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-1 text-black">Email Address</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className="w-full p-2 border rounded-lg text-black"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-1 text-black">Phone Number</label>
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleInputChange}
+          className="w-full p-2 border rounded-lg text-black"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-1 text-black">Select Skill</label>
+        <select
+          name="skill"
+          value={formData.skill}
+          onChange={handleInputChange}
+          className="w-full p-2 border rounded-lg text-black"
+          required
+        >
+          <option value="" disabled>Choose a skill</option>
+          <optgroup label="Vocational Skills">
+            <option value="Tailoring and Fashion Design">Tailoring and Fashion Design</option>
+            <option value="Catering and Baking">Catering and Baking</option>
+            <option value="Hairdressing and Beauty Therapy">Hairdressing and Beauty Therapy</option>
+            <option value="Welding and Metalwork">Welding and Metalwork</option>
+            <option value="Woodwork and Carpentry">Woodwork and Carpentry</option>
+          </optgroup>
+          <optgroup label="Digital Skills">
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Coding">Coding</option>
+          </optgroup>
+          <optgroup label="Entrepreneurial Skills">
+            <option value="Business Plan Writing">Business Plan Writing</option>
+            <option value="Financial Literacy">Financial Literacy</option>
+            <option value="Marketing and Sales">Marketing and Sales</option>
+          </optgroup>
+          <optgroup label="Creative Skills">
+            <option value="Photography">Photography</option>
+            <option value="Videography">Videography</option>
+            <option value="Music and Audio Production">Music and Audio Production</option>
+          </optgroup>
+        </select>
+      </div>
+      <div className="flex justify-end gap-2">
+        <button
+          type="button"
+          onClick={onClose}
+          className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="px-4 py-2 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-500"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </motion.div>
+</motion.div>
+    </AnimatePresence>
+  );
+};
+
+// ProjectCard Component
 const ProjectCard = ({
   title,
   description,
@@ -47,6 +182,7 @@ const ProjectCard = ({
   );
 };
 
+// StatItem Component
 const StatItem = ({
   icon,
   value,
@@ -77,7 +213,10 @@ const StatItem = ({
   </motion.div>
 );
 
+// FoundationPage Component
 export function FoundationPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const projects = [
     {
       title: "Clean Energy Initiative",
@@ -108,36 +247,47 @@ export function FoundationPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-900 via-purple-900 to-cyan-800 text-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-         {/* Upcoming Events Section */}
-         <motion.div
+        {/* Upcoming Events Section */}
+        <motion.div
           className="flex flex-col md:flex-row bg-purple-800 bg-opacity-75 rounded-xl p-6 mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          id="world-toilet-day-event" 
+          id="skill-acquisition-event"
         >
           <img
-            src={eventImage}
-            alt="World Toilet Day"
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // Replace with the appropriate image for the event
+            alt="Free Skill Acquisition Program"
             className="h-full md:w-1/2 h-60 object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
           />
           <div className="flex flex-col justify-center text-center md:text-left">
-            <h2 className="text-5xl font-semibold text-cyan-100 mb-2">Upcoming Event: World Toilet Day</h2>
+            <h2 className="text-5xl font-semibold text-cyan-100 mb-2">Upcoming Event: Free Skill Acquisition Program</h2>
             <p className="text-cyan-200 mb-4 text-2xl">
-              Join us in raising awareness about global sanitation issues as we commemorate World Toilet Day. Let’s work together for a healthier, cleaner future.
+              Join us for a transformative skill acquisition program designed to empower individuals with practical and digital skills. Whether you're interested in vocational training, digital skills, or entrepreneurship, this program is for you!
             </p>
-            <motion.a
-              href="https://paystack.com/pay/qqtv1ujoh7"
+            <div className="mb-6">
+              <h3 className="text-3xl font-semibold text-cyan-100 mb-2">Skills Offered:</h3>
+              <ul className="text-cyan-200 text-xl list-disc list-inside">
+                <li>Tailoring and Fashion Design</li>
+                <li>Graphic Design and Digital Marketing</li>
+                <li>Catering and Baking</li>
+                <li>Web Development and Coding</li>
+                <li>Entrepreneurship and Financial Literacy</li>
+              </ul>
+            </div>
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
               className="self-center md:self-start inline-flex items-center px-5 py-3 rounded-full bg-cyan-600 text-white font-semibold text-lg transition duration-300 ease-in-out hover:bg-cyan-500"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Donate Now
+              Register Now
               <ArrowRight className="ml-2 w-5 h-5" />
-            </motion.a>
+            </motion.button>
           </div>
         </motion.div>
 
+        {/* Rest of the FoundationPage content */}
         <motion.header
           className="text-center mb-20"
           initial={{ opacity: 0, y: -50 }}
@@ -258,6 +408,9 @@ export function FoundationPage() {
           </div>
         </motion.section>
       </div>
+
+      {/* Skill Acquisition Modal */}
+      <SkillAcquisitionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

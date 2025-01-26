@@ -1,6 +1,5 @@
 import Modal from "react-modal";
 import { motion } from "framer-motion";
-import eventImage from "../assets/toilet_day.jpeg"; // Replace with your actual image path
 
 // Apply default styles for react-modal
 Modal.setAppElement("#root");
@@ -30,41 +29,54 @@ export function EventModal({ onClose }: EventModalProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-semibold text-center text-purple-700 mb-4">
-          Upcoming Event: World Toilet Day
+        {/* Header */}
+        <h2 className="text-2xl font-bold text-center text-purple-700 mb-4">
+          🚀 Free Skill Acquisition Program
         </h2>
-        <div
-          className="main-event flex flex-col lg:flex-row"
-          style={{ alignItems: "center" }}
-        >
-          <div className="w-full overflow-hidden rounded-lg mb-4">
-            <motion.img
-              src={eventImage}
-              alt="World Toilet Day"
-              className="h-full h-48 object-cover lg:h-64"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-          <div className="eventmodal">
-            <p className="text-center text-gray-700 mb-4 text-1xl">
-              Join us in raising awareness about sanitation issues around the world as we celebrate World Toilet Day.
-            </p>
 
-            <div className="flex justify-center">
-              <motion.button
-                className="bg-purple-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-purple-700"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() =>
-                  (window.location.href = "/foundation#world-toilet-day-event")
-                }
-              >
-                Know More
-              </motion.button>
-            </div>
+        {/* Image */}
+        <div className="w-full overflow-hidden rounded-lg mb-4">
+          <motion.img
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Free Skill Acquisition Program"
+            className="w-full h-48 object-cover lg:h-64"
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="text-center">
+          <p className="text-gray-700 mb-4">
+            Empower yourself with <strong>practical skills</strong> for a brighter future! Join our free program and unlock new opportunities.
+          </p>
+
+          {/* Skills List */}
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold text-purple-700 mb-2">
+              🛠️ Skills You'll Learn:
+            </h3>
+            <ul className="text-gray-700 text-sm list-disc list-inside">
+              <li>Tailoring & Fashion Design</li>
+              <li>Graphic Design & Digital Marketing</li>
+              <li>Catering & Baking</li>
+              <li>Web Development & Coding</li>
+              <li>Entrepreneurship & Financial Literacy</li>
+            </ul>
           </div>
+
+          {/* Call-to-Action Button */}
+          <motion.button
+            className="bg-purple-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-purple-700 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() =>
+              (window.location.href = "/foundation#skill-acquisition-event")
+            }
+          >
+            Learn More
+          </motion.button>
         </div>
       </motion.div>
     </Modal>
