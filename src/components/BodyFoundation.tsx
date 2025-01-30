@@ -261,7 +261,7 @@ export function FoundationPage() {
             className="h-full md:w-1/2 h-60 object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
           />
           <div className="flex flex-col justify-center text-center md:text-left">
-            <h2 className="text-5xl font-semibold text-cyan-100 mb-2">Upcoming Event: Free Skill Acquisition Program</h2>
+            <h2 className="text-5xl font-semibold text-cyan-100 mb-2">Free Skill Acquisition Program</h2>
             <p className="text-cyan-200 mb-4 text-2xl">
               Join us for a transformative skill acquisition program designed to empower individuals with practical and digital skills. Whether you're interested in vocational training, digital skills, or entrepreneurship, this program is for you!
             </p>
