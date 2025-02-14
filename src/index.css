@@ -70,10 +70,7 @@
   background: url("./assets/bg_image.png") no-repeat;
   background-size: cover;
 }
-#herofood {
-  background: url("./assets/food_bg.png") no-repeat;
-  background-size: cover;
-}
+
 #herofoundation {
   background: url("./assets/foundation_bg.png") no-repeat;
   background-size: cover;

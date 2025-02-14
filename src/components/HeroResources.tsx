@@ -1,60 +1,104 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export function HeroSectionResources() {
+  // Slider settings
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+  };
+
+  // Slider content
+  const sliderContent = [
+    {
+      title: "Innovating Across Industries",
+      subtitle: "Shaping Tomorrow",
+      description:
+        "5amas Group: A dynamic holding company driving strategic growth and sustainable development in investment, food, and technology sectors.",
+      image: "https://www.5amasgroup.com/assets/book10-B8ozp7Wm.jpeg",
+    },
+    {
+      title: "Driving Strategic Growth",
+      subtitle: "Sustainable Development",
+      description:
+        "We focus on creating value through innovation, collaboration, and excellence in all our ventures.",
+      image: "https://www.5amasgroup.com/assets/foundation3-BRL8o3KV.png",
+    },
+    {
+      title: "Building the Future",
+      subtitle: "Together",
+      description:
+        "Our mission is to empower industries and communities through cutting-edge solutions and responsible practices.",
+      image: "https://www.5amasgroup.com/assets/foundation1-DYk63aAp.png",
+    },
+  ];
+
   return (
     <section
-      id="heroresources"
-      className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+      id=""
+      className="relative overflow-hidden bg-gray-900 text-white"
     >
-      <div className="container mx-auto px-4 py-20 sm:py-24 lg:py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl"
-        >
-          <h1 className="mb-6 text-4xl text-gray-700 font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-            Innovating Across Industries <br />
-            <span className="text-red-400">Shaping Tomorrow</span>
-          </h1>
-          <p className="mb-8 text-lg text-gray-500 sm:text-lg">
-            5amas Group: A dynamic holding company driving strategic growth and
-            sustainable development in investment, food, and technology sectors.
-          </p>
-          <motion.a
-            href="#learn-more"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center rounded-full bg-red-500 px-6 py-3 text-lg font-semibold text-white transition-colors hover:bg-purple-400"
-          >
-            Contact Us
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </motion.a>
-        </motion.div>
-      </div>
-      <div className="absolute inset-0 -z-10 opacity-20">
-        <svg
-          className="h-full w-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <radialGradient
-              id="heroglow"
-              cx="50%"
-              cy="50%"
-              r="50%"
-              fx="50%"
-              fy="50%"
-            >
-              <stop offset="0%" stopColor="#10B981" />
-              <stop offset="100%" stopColor="#059669" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <circle cx="50" cy="50" r="50" fill="url(#heroglow)" />
-        </svg>
-      </div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      {/* Slider */}
+      <Slider {...sliderSettings} className="w-full">
+        {sliderContent.map((slide, index) => (
+          <div key={index} className="relative h-screen">
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('${slide.image}')` }}
+            ></div>
+
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+            {/* Content */}
+            <div className="relative container mx-auto px-6 py-24 sm:py-28 lg:py-36 h-full flex items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="max-w-3xl"
+              >
+                {/* Animated Heading */}
+                <h1 className="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+                  {slide.title} <br />
+                  <span className="text-red-400">{slide.subtitle}</span>
+                </h1>
+
+                {/* Subtext */}
+                <p className="mb-8 text-lg text-gray-300 sm:text-lg">
+                  {slide.description}
+                </p>
+
+                {/* Call to Action Button */}
+                <motion.a
+                  href="#learn-more"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center rounded-full bg-red-500 px-6 py-3 text-lg font-semibold text-white transition-all hover:bg-purple-400 shadow-lg"
+                >
+                  Contact Us
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </motion.a>
+              </motion.div>
+            </div>
+          </div>
+        ))}
+      </Slider>
+
+      {/* Decorative Bottom Wave */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
