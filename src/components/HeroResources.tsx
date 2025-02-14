@@ -1,24 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export function HeroSectionResources() {
-  // Slider settings
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: false,
-  };
-
-  // Slider content
-  const sliderContent = [
+  // Swiper content
+  const swiperContent = [
     {
       title: "Innovating Across Industries",
       subtitle: "Shaping Tomorrow",
@@ -43,17 +32,22 @@ export function HeroSectionResources() {
   ];
 
   return (
-    <section
-      id=""
-      className="relative overflow-hidden bg-gray-900 text-white"
-    >
+    <section className="relative overflow-hidden bg-gray-900 text-white">
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-      {/* Slider */}
-      <Slider {...sliderSettings} className="w-full">
-        {sliderContent.map((slide, index) => (
-          <div key={index} className="relative h-screen">
+      {/* Swiper Slider */}
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        spaceBetween={0}
+        slidesPerView={1}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        loop={true}
+        className="w-full h-screen"
+      >
+        {swiperContent.map((slide, index) => (
+          <SwiperSlide key={index}>
             {/* Background Image */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -94,9 +88,9 @@ export function HeroSectionResources() {
                 </motion.a>
               </motion.div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
 
       {/* Decorative Bottom Wave */}
       <motion.div
