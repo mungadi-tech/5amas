@@ -30,15 +30,15 @@ export function EventModal({ onClose }: EventModalProps) {
         transition={{ duration: 0.5 }}
       >
         {/* Header */}
-        <h2 className="text-2xl font-bold text-center text-purple-700 mb-4">
-          🚀 Free Skill Acquisition Program
+        <h2 className="text-2xl font-bold text-center text-green-700 mb-4">
+          🎓 Free JAMB Form Program
         </h2>
 
         {/* Image */}
         <div className="w-full overflow-hidden rounded-lg mb-4">
           <motion.img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Free Skill Acquisition Program"
+            src="https://cdn.punchng.com/wp-content/uploads/2017/06/01170036/JAMB-logo.jpg"
+            alt="Free JAMB Form Program"
             className="w-full h-48 object-cover lg:h-64"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
@@ -49,33 +49,33 @@ export function EventModal({ onClose }: EventModalProps) {
         {/* Content */}
         <div className="text-center">
           <p className="text-gray-700 mb-4">
-            Empower yourself with <strong>practical skills</strong> for a brighter future! Join our free program and unlock new opportunities.
+            Get a <strong>free JAMB form</strong> and take the first step toward your academic success! Apply today and let’s support your educational journey.
           </p>
 
-          {/* Skills List */}
+          {/* Benefits List */}
           <div className="mb-6">
-            <h3 className="text-xl font-semibold text-purple-700 mb-2">
-              🛠️ Skills You'll Learn:
+            <h3 className="text-xl font-semibold text-green-700 mb-2">
+              ✅ What You Get:
             </h3>
             <ul className="text-gray-700 text-sm list-disc list-inside">
-              <li>Tailoring & Fashion Design</li>
-              <li>Graphic Design & Digital Marketing</li>
-              <li>Catering & Baking</li>
-              <li>Web Development & Coding</li>
-              <li>Entrepreneurship & Financial Literacy</li>
+              <li>100% Free JAMB Form</li>
+              <li>Registration Assistance</li>
+              <li>Exam Preparation Support</li>
+              <li>Exclusive Study Materials</li>
+              <li>Guidance from Education Experts</li>
             </ul>
           </div>
 
           {/* Call-to-Action Button */}
           <motion.button
-            className="bg-purple-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-purple-700 transition-all"
+            className="bg-green-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-green-700 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() =>
-              (window.location.href = "/foundation#skill-acquisition-event")
+              (window.location.href = "/foundation#jamb-program")
             }
           >
-            Learn More
+            Apply Now
           </motion.button>
         </div>
       </motion.div>

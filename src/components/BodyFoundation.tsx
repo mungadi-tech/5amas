@@ -5,7 +5,7 @@ import foundation1 from "../assets/foundation1.png";
 import foundation2 from "../assets/foundation2.png";
 import foundation3 from "../assets/foundation3.png";
 import foundation4 from "../assets/foundation4.png";
-
+import { toast } from "react-toastify";
 
 // Define the type for the SkillAcquisitionModal props
 interface SkillAcquisitionModalProps {
@@ -14,132 +14,154 @@ interface SkillAcquisitionModalProps {
 }
 
 // SkillAcquisitionModal Component
+
+interface SkillAcquisitionModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 const SkillAcquisitionModal = ({ isOpen, onClose }: SkillAcquisitionModalProps) => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    age: "",
+    jambPin: "",
     phone: "",
-    skill: "",
+    address: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    onClose(); // Close the modal after submission
+
+    try {
+      const response = await fetch("https://fiveamas-backend-main.onrender.com/api/apply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form. Please try again.");
+      }
+
+      const result = await response.json();
+      console.log("Form Data Submitted:", result);
+
+      toast.success("Application submitted successfully! We will reach out to you through your phone number.");
+      onClose(); // Close the modal after submission
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   if (!isOpen) return null;
 
   return (
     <AnimatePresence>
-     <motion.div
-  className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
->
-  <motion.div
-    className="bg-white rounded-lg w-full max-w-md p-6"
-    initial={{ y: -50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    exit={{ y: -50, opacity: 0 }}
-  >
-    <h2 className="text-2xl font-semibold mb-4 text-black">Register for Free Skill Acquisition Program</h2>
-    <form onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-1 text-black">Full Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-lg text-black"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-1 text-black">Email Address</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-lg text-black"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-1 text-black">Phone Number</label>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-lg text-black"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-1 text-black">Select Skill</label>
-        <select
-          name="skill"
-          value={formData.skill}
-          onChange={handleInputChange}
-          className="w-full p-2 border rounded-lg text-black"
-          required
+      <motion.div
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <motion.div
+          className="bg-white rounded-lg w-full max-w-md p-6"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
         >
-          <option value="" disabled>Choose a skill</option>
-          <optgroup label="Vocational Skills">
-            <option value="Tailoring and Fashion Design">Tailoring and Fashion Design</option>
-            <option value="Catering and Baking">Catering and Baking</option>
-            <option value="Hairdressing and Beauty Therapy">Hairdressing and Beauty Therapy</option>
-            <option value="Welding and Metalwork">Welding and Metalwork</option>
-            <option value="Woodwork and Carpentry">Woodwork and Carpentry</option>
-          </optgroup>
-          <optgroup label="Digital Skills">
-            <option value="Graphic Design">Graphic Design</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Digital Marketing">Digital Marketing</option>
-            <option value="Coding">Coding</option>
-          </optgroup>
-          <optgroup label="Entrepreneurial Skills">
-            <option value="Business Plan Writing">Business Plan Writing</option>
-            <option value="Financial Literacy">Financial Literacy</option>
-            <option value="Marketing and Sales">Marketing and Sales</option>
-          </optgroup>
-          <optgroup label="Creative Skills">
-            <option value="Photography">Photography</option>
-            <option value="Videography">Videography</option>
-            <option value="Music and Audio Production">Music and Audio Production</option>
-          </optgroup>
-        </select>
-      </div>
-      <div className="flex justify-end gap-2">
-        <button
-          type="button"
-          onClick={onClose}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="px-4 py-2 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-500"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
-  </motion.div>
-</motion.div>
+          <h2 className="text-2xl font-semibold mb-4 text-black">Apply for Free JAMB Form</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1 text-black">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded-lg text-black"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1 text-black">Age</label>
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded-lg text-black"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1 text-black">JAMB PIN</label>
+              <input
+                type="text"
+                name="jambPin"
+                value={formData.jambPin}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded-lg text-black"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1 text-black">Phone Number (Used for JAMB Registration)</label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded-lg text-black"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1 text-black">Address</label>
+              <input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded-lg text-black"
+                required
+              />
+            </div>
+            <div className="flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-500"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </motion.div>
+      </motion.div>
     </AnimatePresence>
   );
 };
+
+
+export default SkillAcquisitionModal;
+
 
 // ProjectCard Component
 const ProjectCard = ({
@@ -248,7 +270,7 @@ export function FoundationPage() {
     <div className="min-h-screen bg-gradient-to-br from-cyan-900 via-purple-900 to-cyan-800 text-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Upcoming Events Section */}
-        <motion.div
+        {/* <motion.div
           className="flex flex-col md:flex-row bg-purple-800 bg-opacity-75 rounded-xl p-6 mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -285,7 +307,49 @@ export function FoundationPage() {
               <ArrowRight className="ml-2 w-5 h-5" />
             </motion.button>
           </div>
+        </motion.div> */}
+
+        <motion.div
+          className="flex flex-col md:flex-row bg-purple-800 bg-opacity-75 rounded-xl p-6 mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          id="free-jamb-form-empowerment"
+        >
+          <img
+            src="https://cdn.punchng.com/wp-content/uploads/2017/06/01170036/JAMB-logo.jpg" // Replace with an appropriate image for the event
+            alt="Free JAMB Form Empowerment"
+            className="h-full md:w-1/2 h-60 object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
+          />
+          <div className="flex flex-col justify-center text-center md:text-left">
+            <h2 className="text-5xl font-semibold text-cyan-100 mb-2">Free JAMB Form Empowerment</h2>
+            <p className="text-cyan-200 mb-4 text-2xl">
+              We are offering free JAMB forms to support students who aspire to further their education.
+              This initiative is aimed at easing the financial burden and encouraging academic excellence.
+              Don't miss this opportunity to take a step toward your future!
+            </p>
+            <div className="mb-6">
+              <h3 className="text-3xl font-semibold text-cyan-100 mb-2">Program Benefits:</h3>
+              <ul className="text-cyan-200 text-xl list-disc list-inside">
+                <li>Free JAMB form for eligible students</li>
+                <li>Guidance on JAMB registration</li>
+                <li>Access to past questions and study materials</li>
+                <li>Free tutorial sessions to boost exam preparation</li>
+                <li>Motivational and career counseling</li>
+              </ul>
+            </div>
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              className="self-center md:self-start inline-flex items-center px-5 py-3 rounded-full bg-cyan-600 text-white font-semibold text-lg transition duration-300 ease-in-out hover:bg-cyan-500"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Apply Now
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </motion.button>
+          </div>
         </motion.div>
+
 
         {/* Rest of the FoundationPage content */}
         <motion.header
