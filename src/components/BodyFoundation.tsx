@@ -41,7 +41,7 @@ const SkillAcquisitionModal = ({ isOpen, onClose }: SkillAcquisitionModalProps) 
     e.preventDefault();
 
     try {
-      const response = await fetch("https://fiveamas-backend-main.onrender.com/api/apply", {
+      const response = await fetch("https://fiveamas-backend.onrender.com/api/apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
