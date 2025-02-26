@@ -56,7 +56,7 @@ const SkillAcquisitionModal = ({ isOpen, onClose }: SkillAcquisitionModalProps) 
       const result = await response.json();
       console.log("Form Data Submitted:", result);
 
-      toast.success("Application submitted successfully! We will reach out to you through your phone number.");
+      alert("Application submitted successfully! We will reach out to you through your phone number.");
       onClose(); // Close the modal after submission
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -112,7 +112,7 @@ const SkillAcquisitionModal = ({ isOpen, onClose }: SkillAcquisitionModalProps) 
                 value={formData.jambPin}
                 onChange={handleInputChange}
                 className="w-full p-2 border rounded-lg text-black"
-                required
+                
               />
             </div>
             <div className="mb-4">
